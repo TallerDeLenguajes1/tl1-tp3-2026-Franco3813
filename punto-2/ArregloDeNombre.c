@@ -3,7 +3,8 @@
 #include <string.h>
 
 void mostrarPersonas(char *nombres[]){
-    printf("Nombres guardados: \n");
+    printf("\n");
+    printf("Nombres guardados: ");
     for (int i = 0; i < 5; i++){
         printf("%s, ", nombres[i]);
     }
@@ -16,7 +17,7 @@ int main(){
     for (int i = 0; i < 5; i++){
         char buff[50];
 
-        printf("\nEscriba un nombre n%d: ",i+1);
+        printf("Escriba un nombre n%d: ",i+1);
         scanf("%s",buff); 
         int tama = strlen(buff);
 
