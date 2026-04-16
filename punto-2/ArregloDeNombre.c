@@ -11,8 +11,17 @@ void mostrarPersonas(char *nombres[]){
     
 }
 
+int BuscarNombre(char *frase[],char *nombre[]){
+    for (int i = 0; i < 5; i++){
+        if (strstr(nombre[i],frase) != NULL){
+            return i;
+        }
+    }
+}
+
 int main(){
-    char *nombre[5];
+    char *nombre[5],frase[10];
+    int a;
 
     for (int i = 0; i < 5; i++){
         char buff[50];
@@ -26,4 +35,15 @@ int main(){
     }
 
     mostrarPersonas(nombre);
+
+    printf("\nIngrese una palabra clave para buscar un nombre: ");
+    scanf("%s",frase);
+    a = BuscarNombre(frase,nombre);
+
+    if (a != -1){
+        printf("El nombre encontrado es: %s", nombre[a]);
+    }else{
+        printf("nombre inexistente");
+    }
+    
 }
