@@ -5,13 +5,24 @@
 void mostrarPersonas(char *nombres[]){
     printf("\n");
     printf("Nombres guardados: ");
+    printf("\n");
+    printf("Nombres guardados: ");
     for (int i = 0; i < 5; i++){
         printf("%s, ", nombres[i]);
     }
     
 }
 
-int BuscarNombre(char *frase[],char *nombre[]){
+void BuscarNombrePorId(int id, char *nombre[]){
+    if (id < 6 && id >= 0){
+        printf("el nombre en la posicion %d es: %s", id, nombre[id-1]);
+    }else{
+        printf("no se encontró el valor buscado");
+    }
+    
+}
+
+int BuscarNombrePorPalabra(char *frase[],char *nombre[]){
     for (int i = 0; i < 5; i++){
         if (strstr(nombre[i],frase) != NULL){
             return i;
@@ -21,7 +32,7 @@ int BuscarNombre(char *frase[],char *nombre[]){
 
 int main(){
     char *nombre[5],frase[10];
-    int a;
+    int a,id;
 
     for (int i = 0; i < 5; i++){
         char buff[50];
@@ -36,9 +47,15 @@ int main(){
 
     mostrarPersonas(nombre);
 
+    printf("\ningrese la posicion del nombre deseado: ");
+    scanf("%d",&id);
+
+    BuscarNombrePorId(id,nombre);
+
+
     printf("\nIngrese una palabra clave para buscar un nombre: ");
     scanf("%s",frase);
-    a = BuscarNombre(frase,nombre);
+    a = BuscarNombrePorPalabra(frase,nombre);
 
     if (a != -1){
         printf("El nombre encontrado es: %s", nombre[a]);
