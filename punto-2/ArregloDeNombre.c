@@ -5,8 +5,6 @@
 void mostrarPersonas(char *nombres[]){
     printf("\n");
     printf("Nombres guardados: ");
-    printf("\n");
-    printf("Nombres guardados: ");
     for (int i = 0; i < 5; i++){
         printf("%s, ", nombres[i]);
     }
@@ -22,7 +20,7 @@ void BuscarNombrePorId(int id, char *nombre[]){
     
 }
 
-int BuscarNombrePorPalabra(char *frase[],char *nombre[]){
+int BuscarNombrePorPalabra(char *frase, char *nombre[]){
     for (int i = 0; i < 5; i++){
         if (strstr(nombre[i],frase) != NULL){
             return i;
@@ -32,7 +30,7 @@ int BuscarNombrePorPalabra(char *frase[],char *nombre[]){
 
 int main(){
     char *nombre[5],frase[10];
-    int a,id;
+    int resultado,id,a;
 
     for (int i = 0; i < 5; i++){
         char buff[50];
@@ -47,20 +45,34 @@ int main(){
 
     mostrarPersonas(nombre);
 
-    printf("\ningrese la posicion del nombre deseado: ");
-    scanf("%d",&id);
+    printf("\nBusqueda de nombre");
+    printf("\nSeleccione el tipo de busqueda:");
+    printf("\n1)Busqueda por ID \n2)Busqueda por palabra clave");
+    printf("\nOpcion elegida: ");
+    scanf("%d",&resultado);
 
-    BuscarNombrePorId(id,nombre);
+    if (resultado == 1){
+        printf("\nIngrese una palabra clave para buscar un nombre: ");
+        scanf("%s",frase);
+        a = BuscarNombrePorPalabra(frase,nombre);
 
+        if (a != -1){
+            printf("El nombre encontrado es: %s", nombre[a]);
+        }else{
+            printf("nombre inexistente");
+        }
+    }else if(resultado == 2){
+        printf("\ningrese la posicion del nombre deseado: ");
+        scanf("%d",&id);
 
-    printf("\nIngrese una palabra clave para buscar un nombre: ");
-    scanf("%s",frase);
-    a = BuscarNombrePorPalabra(frase,nombre);
-
-    if (a != -1){
-        printf("El nombre encontrado es: %s", nombre[a]);
+        BuscarNombrePorId(id,nombre);
     }else{
-        printf("nombre inexistente");
+        printf("Fin del programa");
     }
+    
+
+    
+
+    
     
 }
