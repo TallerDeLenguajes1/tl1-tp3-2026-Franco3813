@@ -70,9 +70,10 @@ int main(){
         printf("Fin del programa");
     }
     
-
+    for (int i = 0; i < 5; i++){
+        free(nombre[i]);
+    }
     
-
-    
-    
+    free(nombre);
+    free(frase);
 }
