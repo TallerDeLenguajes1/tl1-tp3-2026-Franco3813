@@ -26,13 +26,14 @@ int calcular(int cant,int precio){
 int main(){
     char *TiposProductos[]={"Galletas","Snack","Cigarrillos","Caramelos","Bebidas"};
     int cantClientes,a,cantP,precio,total;
-    struct Cliente datos[5];
+    
     srand(time(NULL));
 
     printf("Ingrese la cantidad de clientes visitados: ");
     scanf("%d",&cantClientes);
+    struct Cliente datos[cantClientes];
 
-    if (cantClientes > 0  && cantClientes < 6){
+    if (cantClientes > 0){
         for (int i = 0; i < cantClientes; i++){
             int totalA;
             char buff[50];
@@ -74,5 +75,10 @@ int main(){
     }else{
         printf("Datos Invalidos");
     }
+
+    for (int i = 0; i < cantClientes; i++){
+        free(datos[i].Productos);
+    }
+    
     
 }
